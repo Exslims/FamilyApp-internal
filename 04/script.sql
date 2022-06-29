@@ -31,10 +31,10 @@ DROP TABLE IF EXISTS public.users_wallets;
 DROP TABLE IF EXISTS public.wallets;
 DROP TABLE IF EXISTS public.users;
 
-DROP INDEX IF EXISTS idx_transactions_list_wallet_id_category_id_transactions_date;
-DROP INDEX IF EXISTS idx_get_user_wallets_user_id;
-DROP INDEX IF EXISTS idx_get_users_wallet_wallet_id;
-DROP INDEX IF EXISTS idx_get_categories_budget_id;
+DROP INDEX IF EXISTS idx_select_transactions_wallet_id_category_id_transactions_date;
+DROP INDEX IF EXISTS idx_select_user_wallets_user_id;
+DROP INDEX IF EXISTS idx_select_users_wallet_wallet_id;
+DROP INDEX IF EXISTS idx_select_categories_budget_id;
 
 CREATE TABLE public.users (
     user_id SERIAL PRIMARY KEY,
@@ -109,7 +109,7 @@ CREATE TABLE public.users_permissions (
     role_id INTEGER NOT NULL REFERENCES public.roles(role_id) ON DELETE SET NULL
 );
 
-CREATE INDEX idx_transactions_list_wallet_id_category_id_transactions_date ON transactions(wallet_id, category_id, transaction_date);
-CREATE INDEX idx_get_user_wallets_user_id ON users_wallets(user_id);
-CREATE INDEX idx_get_users_wallet_wallet_id ON users_wallets(wallet_id);
-CREATE INDEX idx_get_categories_budget_id ON categories_budgets(budget_id);
+CREATE INDEX idx_select_transactions_wallet_id_category_id_transactions_date ON transactions(wallet_id, category_id, transaction_date);
+CREATE INDEX idx_select_user_wallets_user_id ON users_wallets(user_id);
+CREATE INDEX idx_select_users_wallet_wallet_id ON users_wallets(wallet_id);
+CREATE INDEX idx_select_categories_budget_id ON categories_budgets(budget_id);
