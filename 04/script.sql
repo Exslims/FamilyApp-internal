@@ -8,6 +8,9 @@ CREATE ROLE main
     LOGIN
     PASSWORD 'root1'
 
+CREATE USER user1 WITH
+    ROLE main
+
 -- пробую в докере, не получается создать ни в psql ни в pgAdmin. В psql просто ничего не происходит, а в pgAdmin выдает ошибку ERROR:  directory "/data/indexes" does not exist хотя я создал папку в контейнере.
 CREATE TABLESPACE indexspace OWNER root LOCATION '/data/indexes'
 
