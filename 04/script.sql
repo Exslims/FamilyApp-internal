@@ -49,7 +49,7 @@ CREATE TABLE public.wallets (
     wallet_id SERIAL PRIMARY KEY,
     owner_id INTEGER NOT NULL REFERENCES public.users(user_id) ON DELETE CASCADE,
     title VARCHAR(50) NOT NULL,
-    balance MONEY NOT NULL,
+    balance NUMERIC(15,6) NOT NULL,
     period_start SMALLINT NOT NULL
 );
 
@@ -90,7 +90,7 @@ CREATE TABLE public.categories_budgets (
 
 CREATE TABLE public.transactions (
     transaction_id SERIAL PRIMARY KEY,
-    amount MONEY NOT NULL,
+    amount NUMERIC(15,6) NOT NULL,
     category_id INTEGER REFERENCES public.categories(category_id) ON DELETE SET NULL,
     wallet_id INTEGER NOT NULL REFERENCES public.wallets(wallet_id) ON DELETE CASCADE,
     transaction_date DATE NOT NULL,
